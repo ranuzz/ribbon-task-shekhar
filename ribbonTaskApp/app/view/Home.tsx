@@ -24,6 +24,8 @@ import {
 } from 'react-query'
 import getExchangeRates from '../api/exchangerate';
 
+import ConversionForm from '../component/ConversionForm';
+
 import { appSubTitle, appTitle, rateTableTitle } from '../config/strings';
 import IExchangeRate from '../model/exchangerate.type';
 
@@ -68,7 +70,11 @@ const GetRates: React.FC<{}> = () => {
   }
   if (data) {
     return (
-      <RateTable data={data} />
+      <>
+        <ConversionForm data={data} />
+        <RateTable data={data} />
+      </>
+      
     );
   }
 
@@ -119,11 +125,9 @@ const Home = () => {
           <Section title={appTitle}>
             {appSubTitle}
           </Section>
-          <Section title={rateTableTitle}>
-            <QueryClientProvider client={queryClient}>
-              <GetRates></GetRates>
-            </QueryClientProvider>
-          </Section>
+          <QueryClientProvider client={queryClient}>
+            <GetRates></GetRates>
+          </QueryClientProvider>
         </View>
       </ScrollView>
     </SafeAreaView>

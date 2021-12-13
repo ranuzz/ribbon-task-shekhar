@@ -5,6 +5,7 @@ function getExchangeRate(rate_row: string[]): IExchangeRate {
     const rate: IExchangeRate = {
         country: rate_row[0],
         currency: rate_row[1],
+        amount: parseInt(rate_row[2]),
         code: rate_row[3],
         rate: parseFloat(rate_row[4])
     };

@@ -25,6 +25,7 @@ import {
 import getExchangeRates from '../api/exchangerate';
 
 import ConversionForm from '../component/ConversionForm';
+import RateTable from '../component/RateTable';
 
 import { appSubTitle, appTitle, rateTableTitle } from '../config/strings';
 import IExchangeRate from '../model/exchangerate.type';
@@ -81,19 +82,7 @@ const GetRates: React.FC<{}> = () => {
   return null;
 }
 
-const RateTable: React.FC<{
-  data: IExchangeRate[]
-}> = ({data}) => {
-  return (
-    <>
-    <FlatList
-      data={data}
-      renderItem={({item}) => <Text style={styles.rateRow}>{item.country} ({item.code}) | {item.rate}</Text>}
-      >
-    </FlatList>
-    </>
-  );
-}
+
 
 const Section: React.FC<{
   title: string;
@@ -117,19 +106,21 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar barStyle={'light-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
+
+      <View
         style={styles.backgroundStyle}>
-        <View
+        <Section title={appTitle}>
+          {appSubTitle}
+        </Section>
+      </View>
+
+      <View
           style={styles.backgroundStyle}>
-          <Section title={appTitle}>
-            {appSubTitle}
-          </Section>
           <QueryClientProvider client={queryClient}>
             <GetRates></GetRates>
           </QueryClientProvider>
-        </View>
-      </ScrollView>
+      </View>
+      
     </SafeAreaView>
   )
 }

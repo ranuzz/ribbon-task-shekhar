@@ -56,15 +56,17 @@ const ConversionForm: React.FC<{
 
   const items: ItemType[] = [];
   let rateMap = new Map();  
+  let amountMap = new Map();
 
   data.forEach(({code}) => items.push({label: code, value: code}));
   data.forEach((elem) => rateMap.set(elem.code, elem.rate ));
+  data.forEach((elem) => amountMap.set(elem.code, elem.amount));
 
   const [ddopen, setddOpen] = useState(false);
   const [converted, setConverted] = useState(0);
 
   const onSubmit = (fd: Inputs) => {
-    let c = parseFloat(fd.amount) * rateMap.get(fd.targetcurrency);
+    let c = (parseFloat(fd.amount) / amountMap.get(fd.targetcurrency)) * rateMap.get(fd.targetcurrency);
     setConverted(c);
   };
 

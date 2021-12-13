@@ -14,7 +14,7 @@ import IExchangeRate from '../model/exchangerate.type';
 
 const styles = StyleSheet.create({
   ratelistStyle: {
-    backgroundColor: Colors.black,
+    backgroundColor: 'grey',
     margin: 10,
     padding: 10
   }

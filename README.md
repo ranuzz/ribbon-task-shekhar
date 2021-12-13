@@ -55,5 +55,14 @@ npx react-native start
 ```
 
 ```
-npx react-native run-android --deviceId=RZ8N30W0DLE
+npx react-native run-android --deviceId=****
 ```
+
+## Screenshots
+
+![phone](/asset/Screenshot_20211212-202832_ribbonTaskApp.jpg)
+![emulator](/asset/Screenshot_1639369944.png)
+
+## Video
+
+[capture](/asset/ribbiontask.webm)
